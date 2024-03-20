@@ -15,7 +15,7 @@ Before runnig the tests, ensure that you have following:
 
 1. Clone this repository by running the following command:
 
-        git clone https://github.com/alphabin1/playwright-sample
+        git clone https://github.com/Bh-bts/playwright-java.git
         cd Playwright_Java
 2. Run the TestNG file located within the `testrunners` directory under `src/test/resources`:
 
