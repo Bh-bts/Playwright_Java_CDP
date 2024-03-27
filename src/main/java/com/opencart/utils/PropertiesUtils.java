@@ -1,9 +1,6 @@
 package com.opencart.utils;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -11,7 +8,7 @@ import java.util.Properties;
  */
 public class PropertiesUtils {
 
-    private final String CONFIG_FILE = "/src/test/resources/Config/config.properties";
+    private final String CONFIG_FILE = "src/test/resources/config/config.properties";
 
     private final Properties properties;
 
@@ -57,7 +54,7 @@ public class PropertiesUtils {
      * @return boolean value representing the headless mode property.
      */
     public boolean setHeadlessMode() {
-        String headlessMode = getProperty("url");
+        String headlessMode = getProperty("headless");
         return Boolean.parseBoolean(headlessMode);
     }
 }

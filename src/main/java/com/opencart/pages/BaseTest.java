@@ -1,4 +1,4 @@
-package com.opencart.base;
+package com.opencart.pages;
 
 import java.io.IOException;
 
@@ -9,8 +9,6 @@ import org.testng.annotations.BeforeTest;
 
 import com.microsoft.playwright.Page;
 import com.opencart.browserFactory.Browsers;
-import com.opencart.pages.ExtensionsPage;
-import com.opencart.pages.LoginPage;
 import com.opencart.utils.PropertiesUtils;
 import com.opencart.utils.ScreenshotUtils;
 
@@ -20,26 +18,28 @@ import com.opencart.utils.ScreenshotUtils;
 public class BaseTest {
 
     Browsers browsers;
-    Page page;
-    protected ExtensionsPage homePage;
+    public Page page;
     protected LoginPage loginPage;
+    protected DashboardPage dashboardPage;
     PropertiesUtils propertiesUtils;
     ScreenshotUtils screenshotUtils;
+
+    public BaseTest(){
+        propertiesUtils = new PropertiesUtils();
+    }
 
     /**
      * Initializes the test environment.
      *
-     * @throws IOException if an I/O exception occurs
      */
     @BeforeTest
-    public void setUP() throws IOException {
+    public void setUP() {
         browsers = new Browsers();
         page = browsers.startBrowser(
                 propertiesUtils.setBrowser().trim(),
                 propertiesUtils.setUrl().trim(),
                 propertiesUtils.setHeadlessMode()
         );
-        homePage = new ExtensionsPage(page);
     }
 
     /**
@@ -59,7 +59,7 @@ public class BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
-            // Capture a screenshot and get the path
+            // Capture a screenshot
             String screenshotPath = screenshotUtils.captureScreenshot();
             System.out.println("Screenshot is generated for failure: " + result.getName() + " - Path: " + screenshotPath + '\n');
         }
