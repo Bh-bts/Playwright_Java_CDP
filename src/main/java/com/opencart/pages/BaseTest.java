@@ -14,6 +14,8 @@ import com.opencart.utils.ScreenshotUtils;
 
 /**
  * BaseTest class for test initialization and teardown.
+ *
+ * @Bhavin.Thumar
  */
 public class BaseTest {
 
@@ -37,7 +39,7 @@ public class BaseTest {
         browsers = new Browsers();
         page = browsers.startBrowser(
                 propertiesUtils.setBrowser().trim(),
-                propertiesUtils.setUrl().trim(),
+                propertiesUtils.setBaseURL().trim(),
                 propertiesUtils.setHeadlessMode()
         );
     }

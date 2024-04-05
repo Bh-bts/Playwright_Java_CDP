@@ -6,14 +6,16 @@ import com.opencart.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class DashboardPageTest extends BaseTest {
 
     @Test
     public void verifyUserIsNavigateToTheDashboardPage() throws InterruptedException {
         LoginPage loginPage = new LoginPage(page);
-        DashboardPage dashboardPage = new DashboardPage(page);
+        assertThat(page).hasURL(loginPage.getLoginPageURL());
         loginPage.doLogin();
-        Assert.assertEquals(page.url(), dashboardPage.getDashboardPageUrl());
-        Thread.sleep(5000);
+        Thread.sleep(15000);
+        assertThat(page).hasTitle("Dashboard");
     }
 }

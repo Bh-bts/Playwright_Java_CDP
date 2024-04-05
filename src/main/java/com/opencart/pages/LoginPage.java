@@ -1,13 +1,17 @@
 package com.opencart.pages;
 
 import com.microsoft.playwright.Page;
+import com.opencart.utils.PropertiesUtils;
 
 /**
  * Page class for Login Page functionalities.
+ *
+ * @Bhavin.Thumar
  */
 public class LoginPage {
 
     Page page;
+    PropertiesUtils propertiesUtils;
 
     // String Locators - Object Repository
     private final String usernameField = "input[name=username]";
@@ -20,6 +24,7 @@ public class LoginPage {
      * @param page The Playwright Page instance.
      */
     public LoginPage(Page page) {
+        this.propertiesUtils = new PropertiesUtils();
         this.page = page;
     }
 
@@ -29,7 +34,7 @@ public class LoginPage {
      * @return String representing the URL of the Login page.
      */
     public String getLoginPageURL() {
-        return page.url();
+        return propertiesUtils.setBaseURL();
     }
 
     public void doLogin() {

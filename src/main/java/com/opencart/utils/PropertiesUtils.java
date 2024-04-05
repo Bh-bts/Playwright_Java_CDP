@@ -42,10 +42,10 @@ public class PropertiesUtils {
     /**
      * Retrieves the URL property.
      *
-     * @return String representing the URL property.
+     * @return String representing the Base URL property.
      */
-    public String setUrl() {
-        return getProperty("url");
+    public String setBaseURL() {
+        return getProperty("baseURL");
     }
 
     /**
